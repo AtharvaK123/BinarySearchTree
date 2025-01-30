@@ -1,0 +1,138 @@
+import java.util.Random;
+import java.util.ArrayList;
+
+public class TreeRunnerQuickTest
+{
+	public TreeRunnerQuickTest()
+	{
+		TreeSet<Integer> tree=new TreeSet<Integer>();
+
+		//Step 1
+		for(int i = 0; i < 30; i++){
+			int ran = (int)(Math.random()*100)+1;
+			tree.add(ran);
+		}
+		System.out.println("PreOrder: " + tree.preOrder());
+		System.out.println("InOrder: " + tree.inOrder());
+		System.out.println("PostOrder: " + tree.postOrder() + "\n\n\n");
+
+		//Step 2
+		System.out.println("Size: " + tree.size() + "\n\n\n");
+
+		//Step 3
+		TreeSet<Integer> tree2 =new TreeSet<Integer>();
+		String st = tree.preOrder();
+		String[] str = st.substring(1,st.length()-1).split(", ");
+		for(int i = 0; i < str.length; i ++){
+			tree2.add(Integer.parseInt(str[i]));
+		}
+
+		//Step 5
+		System.out.println("PreOrder: " + tree2.preOrder());
+		System.out.println("InOrder: " + tree2.inOrder());
+		System.out.println("PostOrder: " + tree2.postOrder() + "\n\n\n");
+
+		//Step 6
+		TreeSet<Integer> tree3 =new TreeSet<Integer>();
+		String st2 = tree.inOrder();
+		String[] str2 = st2.substring(1,st2.length()-1).split(", ");
+		for(int i = 0; i < str2.length; i ++){
+			tree3.add(Integer.parseInt(str2[i]));
+		}
+
+		//Step 7
+		System.out.println("PreOrder: " + tree3.preOrder());
+		System.out.println("InOrder: " + tree3.inOrder());
+		System.out.println("PostOrder: " + tree3.postOrder());
+		System.out.println("I notice that PreOrder is also printing out in order and postOrder is printing out backwards" + "\n\n\n");
+
+		//Step 8
+		TreeSet<Integer> tree4 =new TreeSet<Integer>();
+		String st3 = tree.postOrder();
+		String[] str3 = st3.substring(1,st3.length()-1).split(", ");
+		for(int i = 0; i < str3.length; i ++){
+			tree4.add(Integer.parseInt(str3[i]));
+		}
+
+		//Step 9
+		System.out.println("PreOrder: " + tree4.preOrder());
+		System.out.println("InOrder: " + tree4.inOrder());
+		System.out.println("PostOrder: " + tree4.postOrder());
+		System.out.println("I notice that PreOrder has changed and InOrder is the same" + "\n\n\n");
+
+		//Step 10
+		TreeSet<String> t =new TreeSet<String>();
+		for(int i = 0; i < 20; i++){
+			Random r = new Random();
+			char c = (char)(r.nextInt(26) + 'a');
+			String ch = String.valueOf(c);
+			t.add(ch);
+		}
+
+		//Step 11
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+
+		//Step 12
+		t.rotateRight();
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+		t.rotateRight();
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+		t.rotateRight();
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+
+		//Step 13
+		t.rotateLeft();
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+		t.rotateLeft();
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+		t.rotateLeft();
+		System.out.println("PreOrder: " + t.preOrder());
+		System.out.println("InOrder: " + t.inOrder());
+		System.out.println("PostOrder: " + t.postOrder() + "\n\n\n");
+
+		//Step 14
+		TreeSet<Integer> tree5 =new TreeSet<Integer>();
+		ArrayList<Integer> array  = new ArrayList<Integer>();
+		for(int i = 0; i < 10; i ++){
+			int ran = (int)(Math.random()*100)+1;
+			array.add(ran);
+			tree5.add(ran);
+		}
+
+		//Step 15-16
+		int size = array.size();
+		for(int i = size; i > 0; i--){
+			int ran = (int)(Math.random()*(size-1))+0;
+			int num = array.get(ran);
+			tree5.remove(num);
+			for(int j = 0; j < array.size(); j++){
+				if(array.get(j) == num){
+					array.remove(j);
+				}
+			}
+			System.out.println("Removing: " + num);
+			System.out.println("PreOrder: " + tree5.preOrder());
+			System.out.println("InOrder: " + tree5.inOrder());
+			System.out.println("PostOrder: " + tree5.postOrder() + "\n\n\n");
+			size--;
+		}
+	}
+
+
+	public static void main(String[] args)
+	{
+		TreeRunnerQuickTest app=new TreeRunnerQuickTest();
+	}
+}
